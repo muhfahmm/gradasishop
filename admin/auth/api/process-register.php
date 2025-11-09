@@ -15,7 +15,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     }
 
     // Cek apakah username sudah terdaftar
-    $check_query = "SELECT * FROM admin WHERE username = '$username'";
+    $check_query = "SELECT * FROM tb_admin WHERE username = '$username'";
     $check_result = mysqli_query($db, $check_query);
 
     if (mysqli_num_rows($check_result) > 0) {
@@ -27,7 +27,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Simpan ke database
-    $insert_query = "INSERT INTO admin (username, password) VALUES ('$username', '$hashed_password')";
+    $insert_query = "INSERT INTO tb_admin (username, password) VALUES ('$username', '$hashed_password')";
     $result = mysqli_query($db, $insert_query);
 
     if ($result) {
